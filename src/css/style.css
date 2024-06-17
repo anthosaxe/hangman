@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    color: white;
+}
+
+.live{
+    fill: green;
+    width: 20px;
+}
+
+.loose{
+    fill: red;
+    width: 20px;
+}
