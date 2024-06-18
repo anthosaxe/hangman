@@ -20,17 +20,16 @@
           <br>
           - devinez toute les lettres qui doivent composer le mot.
           <br><br>
-          - cliquez sur les bouton pour voir si la lettre compose le mot.
+          - le nombre de lettre va de 5 à 10 à choisir via le selecteur de droite.
           <br><br>
-          - si la lettre compose bien le mot, elle se dévoile.
+          - entrez votre lettre et cliquez sur les bouton pour voir si la lettre compose le mot.
           <br><br>
-          - si la lettre ne compose pas le mot, vous perdez une vie.
+          - si la lettre compose bien le mot, elle se dévoile sinon vous perdez une vie.
+          <br><br>
+          - dans ce jeu nous ignoront les accents, les mots peuuvent en comporter mais ils ne affichés dans le jeu.
           <br><br>
           - vous disposez de 7 vies.
-          <br><br>
-          - le nombre de lettre minimum est de 5.
-          <br><br>
-          - le nombre de lettre maximum est de 10.
+          
         </p>
       </div>
 
@@ -43,12 +42,17 @@
           <p id="hidden_mot" class="font-extrabold text-lg"></p>
         </div>
 
-        
-
-        <div class="">
+        <div class="hidden" id="input-area">
           entrez votre lettre :
-          <input type="text" id="letter-input" maxlength="1" />
+          <input class="text-black" type="text" id="letter-input" maxlength="1" />
         </div>
+
+        <div>
+          <button class="hidden border rounded-lg w-full p-5" id="submit_guess">
+            try
+          </button>
+        </div>
+
 
       </div>
     </div>
@@ -102,10 +106,10 @@
           <option value="10">10</option>
         </select>
       </div>
-      
+
       <div id="loose" class="hidden justify-center py-5">
-          <img src="/src/img/pendu.png" alt="">
-        </div>
+        <img src="/src/img/pendu.png" alt="">
+      </div>
 
       <div class="col-span-3 text-red-700" id="wrong">
 

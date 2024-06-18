@@ -1,56 +1,27 @@
 (() => {
 
     const motsDe5Lettres = [
-        "table", "chien", "cercle", "image", "livre", "pizza", "rouge", "plage", "cadre", "boule",
-        "faire", "crème", "gazon", "carte", "voile", "route", "laide", "sable", "forme", "arbre",
-        "vélo", "laine", "fille", "pomme", "fleur", "blanc", "jaune", "belle", "ombre", "plein",
-        "poire", "rond", "durée", "filer", "venir", "lance", "galet", "marin", "fumer", "voire",
-        "matin", "doigt", "lourd", "serre", "cuire", "plume", "sente", "trame", "gants", "chefs"
+        'arbre', 'plage', 'table', 'chaud', 'sable'
     ];
-
 
     const motsDe6Lettres = [
-        "orange", "bateau", "guitar", "fraise", "école", "joueur", "forêt", "voyage", "chemin", "maison",
-        "souris", "amoure", "soleil", "février", "bureau", "couteau", "plante", "goutte", "rocher", "carton",
-        "violet", "allier", "crayon", "aquare", "garçon", "billet", "triste", "chanter", "saluer", "coller",
-        "planer", "grille", "ramper", "jardin", "painne", "tissus", "champs", "hiver", "mercre", "pierre",
-        "tabler", "poires", "encour", "velour", "paquet", "vallon", "crêper", "aimerai", "baiser", "bricol"
+        'souple', 'bateau', 'amande', 'fraise', 'girafe'
     ];
-
 
     const motsDe7Lettres = [
-        "animaux", "bananes", "chapeau", "fleurir", "guitare", "jouerai", "nuageux", "paradis", "requins",
-        "voyager", "branche", "chaleur", "élégant", "festival", "gardien", "justice", "liberty", "mandate",
-        "nostalgie", "opinion", "qualité", "renverser", "sombrero", "tribunal", "univers", "volcans",
-        "baguette", "cachette", "déjeuner", "féminine", "généreux", "habituer", "indiquer", "japonais",
-        "lucarne", "moisson", "notable", "oasis", "parfait", "question", "racisme", "théâtre", "utopie", "tourner",
-        "cuisine", "peindre", "papier", "parlons", "parmi", "semble", "siècle", "utile"
+        'adipeux', 'fantome', 'galerie', 'imagine', 'justice'
     ];
 
-
     const motsDe8Lettres = [
-        "aventure", "chocolat", "définir", "excellent", "fédérate", "généreuse", "harmonise", "influence", "jardiner",
-        "kilomètre", "littéral", "magnifie", "naissance", "opération", "partager", "question", "restaurant", "souligner", "technique",
-        "uniquement", "volonté", "cabrioler", "dynamique", "frappante", "gratitude", "humoriste", "impression",
-        "judicieux", "lointaine", "magnétise", "notoriété", "occupante", "portatif", "quartier", "réjouirai", "sélection", "transmettre",
-        "vagabond", "xénophobe", "yachtiste", "zébré", "abondant", "courage", "développe", "pharaons", "synonyme"
+        'asphalte', 'brouette', 'antigels', 'decoller', 'escargot'
     ];
 
     const motsDe9Lettres = [
-        "ambulance", "balançoir", "charnière", "détective", "élégantes", "formidable", "générosit", "harmonique", "influence", "journalier",
-        "kilomètre", "littéraire", "magnifique", "navigateur", "orchestral", "particular", "questionn", "resplendir", "soutenirai", "techniques",
-        "uniquement", "volontaire", "basculade", "dynamique", "fanatique", "géographie", "humoriste", "implacable", "judicieux",
-        "lointaine", "magnétise", "notoriété", "occurrence", "portrait", "quadrature", "réjouirai", "sélectionn", "télévision", "universal",
-        "vagabonde", "xénophobe", "yardstick", "zèbresque", "abondante", "bénéfique", "courageux", "développe", "pédagogie", "sarcastic"
+        'asphyxier', 'boulevard', 'champions', 'iberienne', 'equilibre'
     ];
 
-
     const motsDe10Lettres = [
-        "accueillir", "bénéfique", "courageuse", "développer", "enthousias", "fantastique", "générosité", "harmonieux", "instructif", "jardiniers",
-        "kilométrage", "littéraire", "magnifique", "nourrissant", "observateur", "participer", "quadrature", "rappelerai", "souvenance", "technologie",
-        "uniquement", "véritable", "bénéfique", "dynamique", "exigeant", "fabuleux", "génétique", "horlogerie", "implication", "justicier",
-        "laboratoire", "magnétisme", "notoriété", "occasionne", "paradoxe", "quantitatif", "rejoindreai", "spécialisé", "temporalité", "universelle",
-        "vacillante", "xénophobie", "brillamment", "courageuse", "développé", "téléphoner", "viticulture", "mensuration", "préposition", "superlatif"
+        'accueillir', 'bouleverse', 'certificat', 'developper', 'zigouiller'
     ];
 
 
@@ -63,6 +34,7 @@
         let hidden_tab;
         let guess;
         let hidden_area = document.getElementById('hidden_mot');
+
 
         switch (lettre_mot) {
             case 5:
@@ -93,9 +65,55 @@
         console.log(hidden_tab);
 
         document.getElementById('selector').classList.add('hidden');
+        document.getElementById('input-area').classList.remove('hidden');
+        document.getElementById('submit_guess').classList.remove('hidden');
+
 
         let vie = 7;
 
-        
+        document.getElementById('submit_guess').addEventListener('click', () => {
+
+            let guess_lettre = document.getElementById('letter-input').value.toString();
+            let lettre_pres = true;
+
+            if (guess_lettre === "") {
+                alert('veuillez entrez une lettre');
+                lettre_pres = false;
+            }
+
+            if (lettre_pres) {
+                document.getElementById('letter-input').value = "";
+                let inn = false;
+
+                for (let i = 0; i < hidden_tab.length; i++) {
+
+                    if (hidden_tab[i] === guess_lettre) {
+                        guess[i] = guess_lettre;
+                        hidden_area.innerHTML = guess.join(" ");
+                        inn = true;
+                    }
+
+                    if (i + 1 === hidden_tab.length && inn === false) {
+                        let hp = vie.toString();
+                        document.getElementById(hp).classList.remove('live');
+                        document.getElementById(hp).classList.add('loose');
+                        document.getElementById('wrong').innerHTML += guess_lettre + ", ";
+                        vie -= 1;
+                        if (vie === 0) {
+                            hidden_area.innerHTML = "C EST PERDU !<br>Le mot était : " + hidden_tab.join('');
+                            document.getElementById('loose').classList.remove('hidden');
+                            document.getElementById('loose').classList.add('flex');
+                            document.getElementById('input-area').classList.add('hidden');
+                            document.getElementById('submit_guess').classList.add('hidden');
+                        }
+                    }
+
+                }
+
+            }
+
+        })
+
     });
+
 })();
