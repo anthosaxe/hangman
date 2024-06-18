@@ -14,14 +14,15 @@
 
 
     document.getElementById('lettre_mot').addEventListener('change', () => {
+        let nb_mot_tab = 5;
 
         var lettre_mot = parseInt(document.getElementById('lettre_mot').value);
-        let randmot = Math.floor(Math.random() * 5);
+        let randmot = Math.floor(Math.random() * nb_mot_tab);
 
         let hidden_mot = "";
         let guess;
         let hidden_area = document.getElementById('hidden_mot');
-        
+
         switch (lettre_mot) {
             case 5:
                 guess = ["_", "_", "_", "_", "_"];
@@ -65,14 +66,17 @@
         document.getElementById('submit_guess').addEventListener('click', () => {
 
             let guess_lettre = document.getElementById('letter-input').value.toString();
-            let lettre_pres = true;
-
-            if (guess_lettre === "") {
-                alert('veuillez entrez une lettre');
-                lettre_pres = false;
-            }
+            let alphabet = "abcdefghijklmnopqrstuvwxyz";
+            let alpha_tab = alphabet.split('');
+            let lettre_pres = !alpha_tab.includes(guess_lettre);
 
             if (lettre_pres) {
+                alert('Veuillez entrer une lettre valide.');
+                document.getElementById('letter-input').value = "";
+                return;
+            }
+
+            if (!lettre_pres) {
                 document.getElementById('letter-input').value = "";
                 let inn = false;
 
@@ -105,20 +109,20 @@
 
             let end = true;
 
-            for(let i=0;i<guess.length;i++){
-                if(guess[i] === "_"){
+            for (let i = 0; i < guess.length; i++) {
+                if (guess[i] === "_") {
                     end = false;
                 }
             }
 
-            if (end === true){
+            if (end === true) {
                 document.getElementById('input-area').classList.add('hidden');
                 document.getElementById('submit_guess').classList.add('hidden');
                 hidden_area.innerHTML = "C EST GAGNÉ !<br>Le mot était : " + hidden_tab.join('');
             }
 
         })
-            
+
     });
 
 })();
