@@ -14,7 +14,7 @@
 
 
     document.getElementById('lettre_mot').addEventListener('change', () => {
-        
+
         var lettre_mot = parseInt(document.getElementById('lettre_mot').value);
         let randmot = Math.floor(Math.random() * 5);
 
@@ -112,7 +112,9 @@
             }
 
             if (end === true){
-                hidden_area.innerHTML = "C EST GAGNÉ !"
+                document.getElementById('input-area').classList.add('hidden');
+                document.getElementById('submit_guess').classList.add('hidden');
+                hidden_area.innerHTML = "C EST GAGNÉ !<br>Le mot était : " + hidden_tab.join('');
             }
 
         })
